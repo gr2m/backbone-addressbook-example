@@ -1,0 +1,33 @@
+{
+  "name": "backbone-addressbook-example",
+  "version": "1.0.0",
+  "description": "example app to showcase offline-first",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gr2m/backbone-addressbook-example.git"
+  },
+  "keywords": [
+    "backbone",
+    "javascript",
+    "offlinefirst",
+    "app"
+  ],
+  "author": "Gregor Martynus <gregor@martynus.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gr2m/backbone-addressbook-example/issues"
+  },
+  "homepage": "https://github.com/gr2m/backbone-addressbook-example",
+  "dependencies": {
+    "express": "^4.10.4",
+    "express-pouchdb": "^0.8.1",
+    "morgan": "^1.5.0",
+    "pouchdb": "^3.2.0",
+    "request": "^2.51.0"
+  }
+}

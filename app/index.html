@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BackboneConf Contacts</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid login-container"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="search"><a href="#contacts/search"><i class="glyphicon glyphicon-search"></i> <span class="hidden-xs">Search</span></a></li>
+            <li class="favorites"><a href="#contacts/favorites"><i class="glyphicon glyphicon-star"></i> <span class="hidden-xs">Favorites</span></a></li>
+            <li class="new"><a href="#contacts/new"><i class="glyphicon glyphicon-plus"></i> <span class="hidden-xs">Create Contact</span></a></li>
+            <li class="logout"><a href="#logout"><i class="glyphicon glyphicon-off"></i> <span class="hidden-xs">Sign out</span></a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div class="main-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="tpl-search">
+      <p class="search">
+        <input type="text" class="form-control" placeholder="search" name="search">
+      </p>
+      <hr>
+      <ul class="contacts-container list-unstyled"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-favorites">
+      <h2 class="page-header">Favorites</h2>
+
+      <ul class="contacts-container list-unstyled"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-contact-row">
+      <a href="#/contacts/<%- id %>">
+        <strong><%- name %></strong>
+        <% if (twitter) { %>
+        <small>@<%- twitter %></small>
+        <% } %>
+      </a>
+    </script>
+
+    <script type="text/template" id="tpl-detail">
+      <div class="pull-right">
+        <div class="btn-group">
+          <a class="btn btn-default btn-sm" href="#contacts/edit/<%- id %>"><i class="glyphicon glyphicon-pencil"></i></a>
+          <button class="btn btn-default btn-sm" data-action="favorite">
+            <% if (isFavorite) { %>
+              <i class="glyphicon glyphicon-star"></i>
+            <% } else { %>
+              <i class="glyphicon glyphicon-star-empty"></i>
+            <% } %>
+          </button>
+        </div>
+
+        <button class="btn btn-default btn-sm" data-action="delete"><i class="glyphicon glyphicon-trash"></i></button>
+      </div>
+      <h2 class="page-header"><%- name %></h2>
+
+      <dl>
+        <dt>Twitter</dt>
+        <dd><%- twitter %></dd>
+        <dt>Info</dt>
+        <dd><%= info.replace(/\n/g,'<br>') %></dd>
+      </dl>
+
+      <h3>Notes</h3>
+
+      <form role="form" class="notes-form">
+        <div class="form-group">
+          <textarea class="form-control" name="note" value="" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Add note</button>
+        </div>
+      </form>
+
+      <hr>
+
+      <div class="notes-container">
+      </div>
+    </script>
+
+    <script type="text/template" id="tpl-note">
+      <div class="note">
+        <%- time %><br>
+        <%= text.replace(/\n/g,'<br>') %>
+
+        <a href="#" data-action="remove-note" data-index="<%- index %>"><i class="glyphicon glyphicon-trash"></i></a>
+      </div>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-form">
+      <h2 class="page-header"><%= isNew ? 'Create' : 'Edit' %> Contact</h2>
+      <form role="form" class="form-horizontal contract-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" value="<%- name %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Twitter:</label>
+          <div class="col-sm-6">
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <input type="text" class="form-control" placeholder="Username" name="twitter" value="<%- twitter %>">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Info:</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" name="info" value="" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#<%- typeof id !== 'undefined' ? 'contacts/' + id : 'contacts/search' %>" class="btn btn-default btn-block">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </script>
+
+    <script type="text/template" id="tpl-login">
+      <div class="form">
+        <form role="form" class="form-horizontal login-form col-sm-8 col-sm-offset-2">
+          <h2 class="page-header text-center">BackboneConf Contacts</h2>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Username:</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="username" value="test">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Email address:</label>
+            <div class="col-sm-6">
+              <input type="password" class="form-control" name="password" value="test">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-3">
+              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </script>
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/underscore/underscore.js"></script>
+    <script src="vendor/backbone/backbone.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/models/contact.js"></script>
+    <script src="js/collections/contacts.js"></script>
+    <script src="js/views/search.js"></script>
+    <script src="js/views/favorites.js"></script>
+    <script src="js/views/contactRow.js"></script>
+    <script src="js/views/detail.js"></script>
+    <script src="js/views/contactForm.js"></script>
+    <script src="js/views/loginForm.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/bootstrap_contacts.js"></script>
+
+    <script>
+      $(app.start);
+    </script>
+  </body>
+</html>

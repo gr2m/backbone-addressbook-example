@@ -1,0 +1,111 @@
+body {
+  transition: opacity linear 0.4s;
+}
+body.loading {
+  opacity: 0.3;
+}
+
+/* login */
+.login-container {
+  display: none;
+  margin: 40px 0;
+}
+.login-container.show {
+  display: block;
+}
+.login-container.show ~ * {
+  display: none !important;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  padding: 0;
+
+  box-shadow: 0 0 2px #000;
+}
+
+.nav-sidebar > li {
+  float: left;
+  width: 25%;
+}
+.nav-sidebar > li > a {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    top: 0;
+    right: auto;
+    padding: 20px 0;
+  }
+
+  .nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: left;
+  }
+  .nav-sidebar > li {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* main content*/
+.main {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.page-header {
+  margin-top: 0;
+}
+
+
+/* contacts list */
+.contacts-container a {
+  display: block;
+  margin: 0 -20px;
+  padding: 10px 20px;
+  color: inherit;
+}
+.contacts-container a:focus,
+.contacts-container a:hover {
+  background: #337AB7;
+  color: white;
+  text-decoration: none;
+}
+
+.contacts-container a:focus small,
+.contacts-container a:hover small {
+  color: white;
+}
+.contacts-container a * {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* contacts detail */
+.notes-container .note {
+  position: relative;
+}
+.notes-container .note a {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

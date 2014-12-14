@@ -1,0 +1,4 @@
+node_modules
+# ignore files in /db, but add folder
+db/*
+!db/.gitkeep
