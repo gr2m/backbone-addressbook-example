@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BackboneConf Contacts</title>
+    <title>BaBoCoCo!</title>
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
   </head>
@@ -17,6 +17,7 @@
             <li class="search"><a href="#contacts/search"><i class="glyphicon glyphicon-search"></i> <span class="hidden-xs">Search</span></a></li>
             <li class="favorites"><a href="#contacts/favorites"><i class="glyphicon glyphicon-star"></i> <span class="hidden-xs">Favorites</span></a></li>
             <li class="new"><a href="#contacts/new"><i class="glyphicon glyphicon-plus"></i> <span class="hidden-xs">Create Contact</span></a></li>
+            <li class="schedule"><a href="#schedule"><i class="glyphicon glyphicon-time"></i> <span class="hidden-xs">Schedule</span></a></li>
             <li class="logout"><a href="#logout"><i class="glyphicon glyphicon-off"></i> <span class="hidden-xs">Sign out</span></a></li>
           </ul>
         </div>
@@ -137,10 +138,319 @@
       </form>
     </script>
 
+    <script type="text/template" id="tpl-schedule">
+      <div class="schedule-container">
+        <h2 class="page-header">Monday, December 15</h2>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">8:00 – 9:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Registration &amp; Breakfast</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">9:00 – 9:40</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Keynote</div>
+            <div class="speaker-name">
+              <% if (twitter.jashkenas) { %>
+                <a href="#contacts/<%- twitter.jashkenas %>">Jeremy Ashkenas</a>
+              <% } else { %>
+                <a href="https://twitter.com/jashkenas">Jeremy Ashkenas</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">9:50 – 10:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Backbone at Pitchfork</div>
+            <div class="speaker-name">
+              <% if (twitter.mattdennewitz) { %>
+                <a href="#contacts/<%- twitter.mattdennewitz %>">Matt Dennewitz</a>
+              <% } else { %>
+                <a href="https://twitter.com/mattdennewitz">Matt Dennewitz</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">10:35 – 11:15</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Jasmine Testing for Backbone.js Models and Views</div>
+            <div class="speaker-name">
+              <% if (twitter.cyberneticlove) { %>
+                <a href="#contacts/<%- twitter.cyberneticlove %>">Brenda Jin</a>
+              <% } else { %>
+                <a href="https://twitter.com/cyberneticlove">Brenda Jin</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">11:20 – 12:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Ember Components Make My Heart Sing</div>
+            <div class="speaker-name">
+              <% if (twitter.johnkpaul) { %>
+                <a href="#contacts/<%- twitter.johnkpaul %>">John K. Paul</a>
+              <% } else { %>
+                <a href="https://twitter.com/johnkpaul">John K. Paul</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">12:00 – 1:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Lunch</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">1:30 – 2:10</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Building Offline First Applications with Backbone</div>
+            <div class="speaker-name">
+              <% if (twitter.gr2m) { %>
+                <a href="#contacts/<%- twitter.gr2m %>">Gregor Martynus</a>
+              <% } else { %>
+                <a href="https://twitter.com/gr2m">Gregor Martynus</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">2:15 – 2:50</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Go with the flow: Backbone and Streams</div>
+            <div class="speaker-name">
+              <% if (twitter._baconscript) { %>
+                <a href="#contacts/<%- twitter._baconscript %>">Ryan Muller</a>
+              <% } else { %>
+                <a href="https://twitter.com/_baconscript">Ryan Muller</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">2:55 – 3:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Marionette: The Backbone framework</div>
+            <div class="speaker-name">
+              <% if (twitter.jmeaspls) { %>
+                <a href="#contacts/<%- twitter.jmeaspls %>">James Smith</a>
+              <% } else { %>
+                <a href="https://twitter.com/jmeaspls">James Smith</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">3:30 – 4:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Break</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">4:00 – 4:40</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">The WordPress JSON REST API</div>
+            <div class="speaker-name">
+              <% if (twitter.rachelbaker) { %>
+                <a href="#contacts/<%- twitter.rachelbaker %>">Rachel Baker</a>
+              <% } else { %>
+                <a href="https://twitter.com/rachelbaker">Rachel Baker</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">4:45 – 5:25</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Data Based JavaScript</div>
+            <div class="speaker-name">
+              <% if (twitter.tgriesser) { %>
+                <a href="#contacts/<%- twitter.tgriesser %>">Tim Griesser</a>
+              <% } else { %>
+                <a href="https://twitter.com/tgriesser">Tim Griesser</a>
+              <% } %>
+            </div>
+            </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">7:30 – 10:30</span></div>
+          <div class="party">
+            <div><span class="festivities">Movie Night</span> at the Landmark</div>
+            <div><span class="festivities">Food, Drinks, and Pool</span> at Flat Top Johnny's</div>
+          </div>
+        </div>
+
+        <h2 class="page-title">Tuesday, December 16</h2>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">8:00 – 9:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Breakfast</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">9:00 – 9:40</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Keynote</div>
+            <div class="speaker-name">
+              <% if (twitter.HenrikJoreteg) { %>
+                <a href="#contacts/<%- twitter.HenrikJoreteg %>">Henrik Joreteg</a>
+              <% } else { %>
+                <a href="https://twitter.com/HenrikJoreteg">Henrik Joreteg</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">9:50 – 10:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">A visit to the world of responsive real-time</div>
+            <div class="speaker-name">
+              <% if (twitter.cwehrung) { %>
+                <a href="#contacts/<%- twitter.cwehrung %>">Clément Wehrung</a>
+              <% } else { %>
+                <a href="https://twitter.com/cwehrung">Clément Wehrung</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">10:35 – 11:15</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">The Backbone Tango: Dancing with geographical data</div>
+            <div class="speaker-name">
+              <% if (twitter.tjoekbezoer) { %>
+                <a href="#contacts/<%- twitter.tjoekbezoer %>">Daan Mortier</a>
+              <% } else { %>
+                <a href="https://twitter.com/tjoekbezoer">Daan Mortier</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">11:20 – 12:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Marrying Backbone.js and D3.js</div>
+            <div class="speaker-name">
+              <% if (twitter.shirleyxywu) { %>
+                <a href="#contacts/<%- twitter.shirleyxywu %>">Shirley Wu</a>
+              <% } else { %>
+                <a href="https://twitter.com/shirleyxywu">Shirley Wu</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">12:00 – 1:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Lunch</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">1:30 – 2:10</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Web Components + Backbone: a Game-Changing Combination</div>
+            <div class="speaker-name">
+              <% if (twitter.andrewrota) { %>
+                <a href="#contacts/<%- twitter.andrewrota %>">Andrew Rota</a>
+              <% } else { %>
+                <a href="https://twitter.com/andrewrota">Andrew Rota</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">2:15 – 2:50</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Backbone in XBox and Windows Apps</div>
+            <div class="speaker-name">
+              <% if (twitter.kixxauth) { %>
+                <a href="#contacts/<%- twitter.kixxauth %>">Kris Walker</a>
+              <% } else { %>
+                <a href="https://twitter.com/kixxauth">Kris Walker</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">2:55 – 3:30</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">React &amp; Backbone, Sittin’ in a Tree</div>
+            <div class="speaker-name">
+              <% if (twitter.sambreed) { %>
+                <a href="#contacts/<%- twitter.sambreed %>">Sam Breed</a>
+              <% } else { %>
+                <a href="https://twitter.com/sambreed">Sam Breed</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">3:30 – 4:00</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Break</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">4:00 – 4:40</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Backbone under the Magnifying Glass: Tools for Exploring and Debugging Your Apps</div>
+            <div class="speaker-name">
+              <% if (twitter.jasonlaster11) { %>
+                <a href="#contacts/<%- twitter.jasonlaster11 %>">Jason Laster</a>
+              <% } else { %>
+                <a href="https://twitter.com/jasonlaster11">Jason Laster</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time"><span class="time-entity">4:45 – 5:25</span></div>
+          <div class="talk-speaker">
+            <div class="speaker-talk-title">Teaching Backbone (and other cool technologies)</div>
+            <div class="speaker-name">
+              <% if (twitter.gmacwilliam) { %>
+                <a href="#contacts/<%- twitter.gmacwilliam %>">Greg MacWilliam</a>
+              <% } else { %>
+                <a href="https://twitter.com/gmacwilliam">Greg MacWilliam</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <script type="text/template" id="tpl-login">
       <div class="form">
         <form role="form" class="form-horizontal login-form col-sm-8 col-sm-offset-2">
-          <h2 class="page-header text-center">BackboneConf Contacts</h2>
+          <h2 class="page-header text-center">Ba<small>ack</small>Bo<small>on</small>Co<small>nference</small>Co<small>ntacts</small>!</h2>
           <div class="form-group">
             <label class="col-sm-4 control-label">Username:</label>
             <div class="col-sm-6">
@@ -174,6 +484,7 @@
     <script src="js/views/contactRow.js"></script>
     <script src="js/views/detail.js"></script>
     <script src="js/views/contactForm.js"></script>
+    <script src="js/views/schedule.js"></script>
     <script src="js/views/loginForm.js"></script>
     <script src="js/router.js"></script>
     <script src="js/sync.js"></script>

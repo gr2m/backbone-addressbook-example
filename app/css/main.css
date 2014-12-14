@@ -5,16 +5,40 @@ body.loading {
   opacity: 0.3;
 }
 
+/* schedule */
+.schedule-container .event {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.schedule-container .time {
+  float: left;
+  width: 100px;
+  overflow: hidden;
+}
+.schedule-container .talk-speaker {
+  margin-left: 100px;
+}
+
 /* login */
 .login-container {
   display: none;
   margin: 40px 0;
+}
+.login-container .page-header small {
+  display: none;
 }
 .login-container.show {
   display: block;
 }
 .login-container.show ~ * {
   display: none !important;
+}
+
+
+@media (min-width: 400px) {
+  .login-container .page-header small {
+    display: inline;
+  }
 }
 
 /* sidebar */
@@ -33,7 +57,7 @@ body.loading {
 
 .nav-sidebar > li {
   float: left;
-  width: 25%;
+  width: 20%;
 }
 .nav-sidebar > li > a {
   text-align: center;

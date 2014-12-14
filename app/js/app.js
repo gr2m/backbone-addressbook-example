@@ -113,6 +113,18 @@ window.app = {
       $('.sidebar .active').removeClass('active');
     });
 
+    router.on('route:showSchedule', function() {
+      if (app.currentView) app.currentView.remove();
+
+      app.currentView = new app.Views.Schedule({
+        collection: contacts
+      });
+
+      $('.main-container').html(app.currentView.render().$el);
+
+      $('.sidebar .active').removeClass('active');
+      $('.sidebar .nav .schedule').addClass('active');
+    });
     router.on('route:showLogin', function() {
       if (app.currentView) app.currentView.remove();
 

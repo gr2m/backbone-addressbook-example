@@ -47,6 +47,6 @@ app.Views.LoginForm = Backbone.View.extend({
 
 
   handleSignInError: function() {
-    debugger
+    alert('Oops! An error occured')
   }
 });
